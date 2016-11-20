@@ -102,15 +102,25 @@
       img: 'img/items/riihihanko_harava.jpg',
       text: 'Heinän kokoamisväline, varsi tehdään tavallisesti haavasta, lapa koivusta ja piikit pihlajasta. Entisaikaan heinäpellolla tai luonnonniityllä heinää leikkaavien viikatemiesten perässä kulkivat haravilla varustautuneet naiset ja varttuneemmat lapset.',
     },
-    'kappajatasauslauta': {
+    'kappa': {
       title: 'Kappa',
-      img: '',
+      img: 'img/items/kappa_ryykilauta.jpg',
       text: 'Viljan mittaamiseen käytetty puinen mitta-astia, myös  tilavuusmitta, viljamitta. Kapan päällä kuvassa tasauskapula (ryykilauta), jolla ylimääräiset viljat poistettiin kapasta.',
     },
-    'kappoja': {
+    'kappa2': {
       title: 'Kappa',
-      img: '',
+      img: 'img/items/kappa_ryykilauta.jpg',
       text: 'Viljan mittaamiseen käytetty puinen mitta-astia, myös  tilavuusmitta, viljamitta. Kapan päällä kuvassa tasauskapula (ryykilauta), jolla ylimääräiset viljat poistettiin kapasta.',
+    },
+    'tasauslauta': {
+      title: 'Ryykilauta, tasauskapula',
+      img: 'img/items/kappa_ryykilauta.jpg',
+      text: 'Tasauskapula (ryykilauta), jolla ylimääräiset viljat poistettiin kapasta',
+    },
+    'tasauslauta2': {
+      title: 'Ryykilauta, tasauskapula',
+      img: 'img/items/kappa_ryykilauta.jpg',
+      text: 'Tasauskapula (ryykilauta), jolla ylimääräiset viljat poistettiin kapasta',
     },
     'pohdin': {
       title: 'Pohdin',
@@ -156,6 +166,11 @@
       title: 'Risukarhi',
       img: '',
       text: 'Maan möyhennyksen. Risukarhi tehtiin käsivarren vahvuisista tuoreista oksaisista kuusennäreistä, joita vitsastettiin puolen kymmentä rinnakkain parin poikkipuiden varaan.',
+    },
+    'nivelaes': {
+      title: 'Niveläes',
+      img: 'img/items/nivelaes.jpg',
+      text: 'Niveläes koottiin noin 60 cm:n pituisista puukappaleista, jotka yhdistettiin toisiinsa puu- tai rautakaroilla. Puiset tapit korvattiin myöhemmin rautaisilla. Niveläkeen etu oli sen maanpinnan muotoja myötäilevä kulku.',
     }
   };
 

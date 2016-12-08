@@ -8,7 +8,7 @@
       text: 'Pitkävartinen rautahaarukka, jolla nostellaan saviruukkuja uuniin ja uunista pois',
     },
     'harkin': {
-      title: 'Härkin ( hierin)',
+      title: 'Härkin (hierin)',
       img: 'img/items/harkin.jpg',
       text: 'Nuoresta männystä valmistettu haarapäinen sekoitin, jonka päässä on 4–7 oksahaaraa.',
     },
@@ -19,7 +19,7 @@
     },
     'pare': {
       title: 'Päre pärepihdissä',
-      img: '',
+      img: 'img/items/parepihti.jpg',
       text: 'Päre on mäntypuusta kiskottu ohut lastu. Valaisinpäre oli usein hieman tanakampi kuin esimerkiksi pärekorien valmistuksessa käytetyt päreet. Yksi päre palaa noin viisitoista minuuttia ja usein tarvittiin palamassa muutamia yhtä aikaisesti. Koko pitkän talven varalle päreitä olikin valmistettava melkoinen määrä: erään laskelman mukaan yli 20 000 kappaletta yhden vuoden tarpeisiin. Päre asetettiin pärepihtiin.  Palavan päreen alle asetettiin vesisaavi paloturvallisuuden takaamiseksi (kuten kuvassa).',
     },
     'huosain': {
@@ -82,6 +82,11 @@
       img: 'img/items/viskuri.jpg',
       text: 'Puinnissa viljan puhdistamiseen käytetty mekaaninen viljanpuhdistin.  Kammesta pyörittämällä viskurin eli tuultajan sisällä oleva tuuletin pöllyttää akanat ja pölyn irti jyvistä',
     },
+    'varsta': {
+      title: 'Varsta',
+      img: 'img/items/varsta.jpg',
+      text: 'Varsta, puintiväline, jolla jyvät irrotetaan tähkäpäistä, joko yhdestä puusta valmistettu oksavarsta. Kaksiosaisissa vastoissa varsi ja terä on yhdistetty toisiinsa eri tekniikoilla, jolloin puhutaan mm. sarana, solmu, vaarna, silmukkavarstoista. Eri puolella Suomea varstoilla on eri nimityksiä mm. vartta, klupu, riusa, kepakko, maakko.',
+    },
     'sirppi': {
       title: 'Sirppi',
       img: 'img/items/sirppi_viikate.jpg',
@@ -124,7 +129,7 @@
     },
     'pohdin': {
       title: 'Pohdin',
-      img: '',
+      img: 'img/items/pohdin.jpg',
       text: 'Soikea usein toiselta puolen loivasyrjäinen astia,  jolla puidusta viljasta erotettiin roskat.  Usein haapalaudasta tehty kehä ja ohuista  tuohisäleistä tai pajun vitsoista tehty pohja.',
     },
     'kasikivet': {
@@ -144,17 +149,17 @@
     },
     'kiesit': {
       title: 'Kiesit',
-      img: '',
+      img: 'img/items/karrit.jpg',
       text: 'Kahden ajettavat hevoskärryt.',
     },
     'piikkiaes': {
       title: 'Piikkiäes',
-      img: '',
+      img: 'img/items/piikkiaes.jpg',
       text: 'Käytettiin risukarhin tavoin. Kevyellä äkeellä peitettiin jyvät käsikylvön jälkeen tai poistettiin kesannolta rikkaruohoja.  Kesanto tarkoittaa viljelemätöntä tai mulloksella pidettävää peltoa. ',
     },
     'rotanloukku': {
       title: 'Rotanloukku',
-      img: '',
+      img: 'img/items/loukku.jpg',
       text: 'Rottien pyydystämiseen. Rotta on ollut harmillinen seuralainen ja tuhoeläin  esihistoriallisista ajoista lähtien. Kuten hiiriä, myös rottia on pyritty torjumaan erityisesti rakennuksissa loukuilla.',
     },
     'suokengat': {
@@ -164,7 +169,7 @@
     },
     'risukarhi': {
       title: 'Risukarhi',
-      img: '',
+      img: 'img/items/risukarhi.jpg',
       text: 'Maan möyhennyksen. Risukarhi tehtiin käsivarren vahvuisista tuoreista oksaisista kuusennäreistä, joita vitsastettiin puolen kymmentä rinnakkain parin poikkipuiden varaan.',
     },
     'nivelaes': {
@@ -175,9 +180,9 @@
   };
 
   var slideInfo = [
-    'Etsi kuvasta:<br/>Kangaspuut, härkin, varpuvispilä, huosain, Uhvatta (patahanko), kehto, höylät, karstat, rukki, saapasrenki, kapioarkku, päre ja pärepihti, himmeli, öljylamppu',
-    'Etsi kuvasta:<br/>Sirppi, viikate, riihihanko, harava, viskuri, pohdin, käsikivet, kappa ja ryykilauta (tasauslauta)',
-    'Etsi kuvasta:<br/>kiesit, lapio, risukarhi, piikkiäes, kääntöaura, nieveläes, rotanloukku, hevosen suokengät'
+    '<b>Etsi kuvasta esineet:</b><br/>Kangaspuut, härkin, varpuvispilä, huosain, Uhvatta (patahanko), kehto, höylät, karstat, rukki, saapasrenki, kapioarkku, päre ja pärepihti, himmeli, öljylamppu',
+    '<b>Etsi kuvasta esineet:</b><br/>Sirppi, viikate, riihihanko, harava, viskuri, pohdin, käsikivet, kappa ,ryykilauta (tasauslauta) ja varsta',
+    '<b>Etsi kuvasta esineet:</b><br/>kiesit, lapio, risukarhi, piikkiäes, kääntöaura, nieveläes, rotanloukku, hevosen suokengät'
   ];
 
   var swiper = new Swiper('.swiper-container', {
@@ -197,7 +202,13 @@
 
   swiper.on('onSlideChangeEnd', function () {
     updateMaps();
+    updateHelpText();
+    
   });
+
+  function updateHelpText() {
+    $('.info-container-inner').html(slideInfo[swiper.activeIndex]);
+  }
 
   function updateMaps() {
     $('img').mapster('unbind');
@@ -217,12 +228,12 @@
             html += '<img class="modal-img" src="' + data.img + '" />'
           }
           html += '<p class="modal-text">' + data.text + '</p>';
-          $('.info-btn').hide();
+          $('.info-container').hide();
           vex.dialog.alert({
             unsafeMessage: html,
             className: 'vex-theme-plain',
-            callback: function () {
-              $('.info-btn').show();
+            callback: function() {
+              $('.info-container').show();
             }
           });
         }
@@ -257,16 +268,17 @@
   });
 
   $('.info-btn').click(function () {
-    $('.info-btn').hide();
+    $('.info-container').hide();
     vex.dialog.alert({
       unsafeMessage: slideInfo[swiper.activeIndex],
       className: 'vex-theme-top',
-      callback: function () {
-        $('.info-btn').show();
+      callback: function() {
+        $('.info-container').show();
       }
     });
   });
 
+  updateHelpText();
   updateMaps();
 
 })();

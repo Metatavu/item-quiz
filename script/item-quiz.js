@@ -1,6 +1,27 @@
 (function () {
   'use strict';
 
+  var LOCKED = false;
+
+  var QueryString = function () {
+    var query_string = {};
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      if (typeof query_string[pair[0]] === "undefined") {
+        query_string[pair[0]] = decodeURIComponent(pair[1]);
+      } else if (typeof query_string[pair[0]] === "string") {
+        var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+        query_string[pair[0]] = arr;
+      } else {
+        query_string[pair[0]].push(decodeURIComponent(pair[1]));
+      }
+    }
+    window.history.pushState('', document.title, window.location.href.split('?')[0]);
+    return query_string;
+  } ();
+
   var itemData = {
     'patahanko': {
       title: 'Patahanko (pottihaarukka, uhvatta, uhvakka)',
@@ -203,7 +224,6 @@
   swiper.on('onSlideChangeEnd', function () {
     updateMaps();
     updateHelpText();
-    
   });
 
   function updateHelpText() {
@@ -232,7 +252,7 @@
           vex.dialog.alert({
             unsafeMessage: html,
             className: 'vex-theme-plain',
-            callback: function() {
+            callback: function () {
               $('.info-container').show();
             }
           });
@@ -242,6 +262,7 @@
   }
 
   $(window).resize(function () {
+    swiper.unlockSwipes();
     $('img').mapster('unbind');
     if (window.innerHeight == screen.height) {
       $('.fullscreen-btn').hide();
@@ -251,6 +272,9 @@
       $('.swiper-slide').css('width', '65%');
     }
     swiper.update(true);
+    if (LOCKED) {
+      swiper.lockSwipes();
+    }
     updateMaps();
   });
 
@@ -272,11 +296,22 @@
     vex.dialog.alert({
       unsafeMessage: slideInfo[swiper.activeIndex],
       className: 'vex-theme-top',
-      callback: function() {
+      callback: function () {
         $('.info-container').show();
       }
     });
   });
+
+  if (typeof QueryString.slide !== 'undefined') {
+    var slide = parseInt(QueryString.slide, 10);
+    swiper.slideTo(slide, 0, true);
+    swiper.lockSwipes();
+    LOCKED = true;
+    $('.swiper-button-next').hide();
+    $('.swiper-button-prev').hide();
+    $('.quiz-img').hide();
+    $('.quiz-img[data-img-index="' + slide + '"]').show();
+  }
 
   updateHelpText();
   updateMaps();

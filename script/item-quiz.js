@@ -18,7 +18,6 @@
         query_string[pair[0]].push(decodeURIComponent(pair[1]));
       }
     }
-    window.history.pushState('', document.title, window.location.href.split('?')[0]);
     return query_string;
   } ();
 
